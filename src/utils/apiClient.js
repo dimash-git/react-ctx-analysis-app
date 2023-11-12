@@ -26,7 +26,11 @@ apiClient.interceptors.response.use(
       try {
         // Get new JWT token
         const response = await axios.post(
-          import.meta.env.VITE_BACKEND_URL + "/auth/refresh"
+          import.meta.env.VITE_BACKEND_URL + "/auth/refresh",
+          {},
+          {
+            withCredentials: true,
+          }
         );
         if (response.status === 200) {
           // Retry again

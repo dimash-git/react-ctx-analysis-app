@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 
-const DropdownMenu = ({ triggerContent, children }) => {
+const DropdownMenu = ({
+  triggerContent,
+  triggerStyles = null,
+  menuStyles = null,
+  children,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -21,10 +26,18 @@ const DropdownMenu = ({ triggerContent, children }) => {
 
   return (
     <div className="dropdown" ref={dropdownRef}>
-      <div className="dropdown-trigger" onClick={toggleDropdown}>
+      <div
+        className="dropdown-trigger"
+        style={triggerStyles && { ...triggerStyles }}
+        onClick={toggleDropdown}
+      >
         {triggerContent}
       </div>
-      {isOpen && <div className="dropdown-menu">{children}</div>}
+      {isOpen && (
+        <div className="dropdown-menu" style={menuStyles && { ...menuStyles }}>
+          {children}
+        </div>
+      )}
     </div>
   );
 };

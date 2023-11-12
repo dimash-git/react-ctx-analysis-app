@@ -4,6 +4,10 @@ import useAuth from "../hooks/useAuth";
 import apiClient from "../utils/apiClient";
 import DropdownMenu from "./dropdown-menu";
 
+const menuStyles = {
+  width: 200,
+};
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -41,7 +45,7 @@ const Navbar = () => {
           <span>React + FastApi App</span>
         </div>
         {user?.name && (
-          <DropdownMenu triggerContent={user.name}>
+          <DropdownMenu triggerContent={user.name} menuStyles={menuStyles}>
             <div className="dropdown-item" onClick={handleLogout}>
               Выход
             </div>

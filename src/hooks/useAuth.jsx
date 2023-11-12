@@ -27,7 +27,7 @@ const useAuth = () => {
     } else {
       setIsLoading(false);
     }
-  }, [setUser, user]);
+  }, [user, setUser]);
 
   return { user, isLoading };
 };
