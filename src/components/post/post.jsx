@@ -64,8 +64,8 @@ const Post = ({ post }) => {
       {!isChanging && (
         <p className="description">
           {post?.description &&
-            post.description.split(" ").map((word) => (
-              <>
+            post.description.split(" ").map((word, idx) => (
+              <span key={idx}>
                 <span
                   style={
                     word.includes(search) && search.length > 2
@@ -76,7 +76,7 @@ const Post = ({ post }) => {
                   {word}
                 </span>
                 <i>&nbsp;</i>
-              </>
+              </span>
             ))}
         </p>
       )}
